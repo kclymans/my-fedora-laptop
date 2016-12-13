@@ -1,0 +1,41 @@
+- name: install development tools
+  dnf: 
+    name: "{{ item }}" 
+    state: latest 
+  with_items:
+  - gnome-builder
+  - ansible
+  - ansible-lint
+  - ansible-review
+  - libselinux-python
+  - libsemanage-python
+  - gcc
+  - make
+  - gcc-c++
+  - gitg
+  - devassistant-dap-cpp
+  - devassistant-dap-vim
+  - devassistant-dap-python
+  - wireshark
+  - gedit-code-assistance
+  - gedit-plugin-bracketcompletion
+  - gedit-plugin-colorpicker
+  - gedit-plugin-codecomment
+  - gedit-plugin-colorschemer
+  - liveusb-creator
+  - crash
+- name: Virtualization software
+  dnf: 
+    name: "{{ item }}" 
+    state: latest
+  with_items:
+  - docker-latest
+  - docker-latest-vim
+  - virt-manager
+  - libvirt
+  - libvirt-python
+- name: don't auto start libvirtd
+  service: 
+    name: libvirtd 
+    state: stopped 
+    enabled: no

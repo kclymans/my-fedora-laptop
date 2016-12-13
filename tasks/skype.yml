@@ -1,0 +1,37 @@
+#  - name: install depends for skype
+#    yum: name={{item}} state=latest disable_gpg_check=yes
+#    with_items:
+#    - alsa-lib.i686
+#    - fontconfig.i686 
+#    - freetype.i686 
+#    - glib2.i686 
+#    - libSM.i686 
+#    - libXScrnSaver.i686 
+#    - libXi.i686 
+#    - libXrandr.i686 
+#    - libXrender.i686 
+#    - libXv.i686 
+#    - libstdc++.i686 
+#    - pulseaudio-libs.i686 
+#    - qt.i686 
+#    - qt-x11.i686 
+#    - zlib.i686 
+#    - qtwebkit.i686
+#    tags: skype
+#  - name: create folder
+#    file: path=/opt/skype state=directory owner=root group=root mode=0755
+#    tags: skpye
+#  - name: get skype
+#    raw: cd /tmp ; wget --trust-server-names http://www.skype.com/go/getskype-linux-dynamic ; tar xvf skype-4.3* -C /opt/skype --strip-components=1 
+#  - name: create launcher
+#    raw: ln -s /opt/skype/skype.desktop /usr/share/applications/skype.desktop ; ln -s /opt/skype/icons/SkypeBlue_48x48.png /usr/share/icons/skype.png ; ln -s /opt/skype/icons/SkypeBlue_48x48.png /usr/share/pixmaps/skype.png
+#    tags: skype
+#  - name: create exec
+#    raw : '
+#cat << EOF > /usr/bin/skype
+#!/bin/sh
+#export SKYPE_HOME="/opt/skype"
+# 
+# \$SKYPE_HOME/skype --resources=\$SKYPE_HOME \$*
+# EOF'
+#    tags: skype

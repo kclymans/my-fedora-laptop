@@ -1,0 +1,15 @@
+---
+- include: repos.yml
+  tags: repos
+
+- include: basics.yml
+  tags: basics
+
+- include: dev_tools.yml
+  tags: dev_tools
+
+- include: multimedia.yml
+  tags: multimedia
+
+#- include: skype.yml
+#  tags: skype
