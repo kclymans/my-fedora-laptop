@@ -24,6 +24,8 @@
   - gedit-plugin-colorschemer
   - liveusb-creator
   - crash
+  - python2-boto3
+  - python-netaddr
 - name: Virtualization software
   dnf: 
     name: "{{ item }}" 
