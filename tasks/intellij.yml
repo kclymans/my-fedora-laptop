@@ -1,0 +1,21 @@
+---
+- name: get from netbeans site
+  get_url: 
+    url: "{{intellij_url}}"
+    dest: /tmp/{{intellij_archive}}
+- name: install
+  unarchive: 
+    copy: no
+    dest: /opt
+    src: /tmp/{{intellij_archive}}
+    creates: /opt/{{intellij_subdir}}
+- name: link /opt/intellij
+  file: 
+    src: /opt/{{intellij_subdir}}
+    dest: /opt/intellij
+    state: link
+- name: include intellij in path
+  copy: 
+    src: intellij.sh
+    dest: /etc/profile.d/intellij.sh
+    mode: 0644

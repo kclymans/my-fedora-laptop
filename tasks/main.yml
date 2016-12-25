@@ -8,6 +8,9 @@
 - include: dev_tools.yml
   tags: dev_tools
 
+- include: intellij.yml
+  tags: dev_tools
+
 - include: multimedia.yml
   tags: multimedia
 
