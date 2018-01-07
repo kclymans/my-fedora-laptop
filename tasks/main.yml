@@ -1,18 +1,18 @@
 ---
-- include: repos.yml
+- include_tasks: repos.yml
   tags: repos
 
-- include: basics.yml
+- include_tasks: basics.yml
   tags: basics
 
-- include: dev_tools.yml
+- include_tasks: dev_tools.yml
   tags: dev_tools
 
-- include: intellij.yml
+- include_tasks: intellij.yml
   tags: dev_tools
 
-- include: multimedia.yml
-  tags: multimedia
+  #- include_tasks: multimedia.yml
+  #  tags: multimedia
 
 #- include: skype.yml
 #  tags: skype

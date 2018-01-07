@@ -3,7 +3,6 @@
     name: "{{ item }}" 
     state: latest 
   with_items:
-  - gnome-builder
   - ansible
   - ansible-lint
   - ansible-review
@@ -13,9 +12,6 @@
   - make
   - gcc-c++
   - gitg
-  - devassistant-dap-cpp
-  - devassistant-dap-vim
-  - devassistant-dap-python
   - wireshark
   - gedit-code-assistance
   - gedit-plugin-bracketcompletion
