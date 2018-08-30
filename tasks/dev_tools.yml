@@ -2,16 +2,14 @@
   dnf: 
     name: "{{ item }}" 
     state: latest 
-  with_items:
+  loop:
   - ansible
   - ansible-lint
   - ansible-review
-  - libselinux-python
   - libsemanage-python
   - gcc
   - make
   - gcc-c++
-  - gitg
   - wireshark
   - gedit-code-assistance
   - gedit-plugin-bracketcompletion
@@ -22,18 +20,44 @@
   - crash
   - python2-boto3
   - python-netaddr
+  - python3-docker-py
+  - python2-docker-py
+  - testdisk
+  - https://prerelease.keybase.io/keybase_amd64.rpm
 - name: Virtualization software
   dnf: 
     name: "{{ item }}" 
     state: latest
-  with_items:
-  - docker-latest
-  - docker-latest-vim
-  - virt-manager
-  - libvirt
-  - libvirt-python
-- name: don't auto start libvirtd
-  service: 
-    name: libvirtd 
-    state: stopped 
+  loop:
+  - docker
+#  - virt-manager
+#  - libvirt
+#  - libvirt-python
+
+#- name: don't auto start libvirtd
+#  service: 
+#    name: libvirtd 
+#    state: stopped 
+#    enabled: no
+#
+- name: Create systemd docker folder
+  file:
+    path: /etc/systemd/system/docker.service.d
+    state: directory
+    owner: root
+    group: root
+    mode: 0750
+
+- name: start docker
+  service:
+    name: docker
+    state: started
     enabled: no
+
+- name: Create internal docker network
+  docker_network:
+    name: internalnet
+    ipam_options:
+      subnet: '172.18.0.0/16'
+      gateway: 172.18.0.1
+      iprange: '172.18.5.5/24'

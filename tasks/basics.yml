@@ -2,13 +2,8 @@
   dnf: 
     name: "{{ item }}" 
     state: latest
-  with_items:
+  loop:
   - vim-enhanced
-    #  - gimp
-    #  - gimp-data-extras 
-    #  - gimp-lqr-plugin 
-    #  - gimp-resynthesizer 
-    #  - gimp-paint-studio
   - verne-backgrounds-gnome
   - tmux
   - guake
@@ -19,18 +14,42 @@
   - gnome-tweak-tool
   - keepass
   - gnome-todo
-  - gnome-shell-extension-fedmsg
-  - xrdp
   - vinagre
   - gpaste
   - java-openjdk
   - icedtea-web
   - youtube-dl
-  - pcsc-tools
+ # - pcsc-tools
   - NetworkManager-openconnect-gnome
   - lshw
-- name: start smartcard reader
+  - tilix
+  - dos2unix
+  - libselinux-python
+  - rsync
+  - deltarpm
+  - tlp
+  - smartmontools
+  - acpi
+  - acpid
+  - acpitool
+  - policycoreutils-python
+  - mlocate
+  - owncloud-client
+#- name: start smartcard reader
+#  service:
+#    name: pcscd 
+#    state: started
+#    enabled: yes
+#
+- name: Enable smartd
   service:
-    name: pcscd 
+    name: smartd
     state: started
     enabled: yes
+
+- name: Enable trim support
+  service:
+    name: fstrim.timer
+    state: started
+    enabled: yes
+
