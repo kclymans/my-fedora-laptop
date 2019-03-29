@@ -48,7 +48,6 @@ pkg_list_base:
   - gnome-todo
   - xrdp
   - vinagre
-  - xchat
   - gpaste
   - java-openjdk
   - icedtea-web
