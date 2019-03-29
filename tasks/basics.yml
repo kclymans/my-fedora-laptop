@@ -6,7 +6,7 @@
 - name: start smartcard reader
   service:
     name: pcscd 
-    state: running 
+    state: started
     enabled: yes
 #sudo dnf copr enable mystro256/gnome-redshift
 #sudo dnf install gnome-shell-extension-redshift
