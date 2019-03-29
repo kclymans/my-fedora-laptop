@@ -1,55 +1,12 @@
 - name: install extra packages
   dnf: 
-    name: "{{ item }}" 
+    name: "{{ pkg_list_base }}" 
     state: latest
-  loop:
-  - vim-enhanced
-  - verne-backgrounds-gnome
-  - tmux
-  - guake
-  - schroedinger-cat-backgrounds-animated
-  - schroedinger-cat-backgrounds-gnome
-  - gnutls-utils
-  - rkhunter
-  - gnome-tweak-tool
-  - keepass
-  - gnome-todo
-  - vinagre
-  - gpaste
-  - java-openjdk
-  - icedtea-web
-  - youtube-dl
- # - pcsc-tools
-  - NetworkManager-openconnect-gnome
-  - lshw
-  - tilix
-  - dos2unix
-  - libselinux-python
-  - rsync
-  - deltarpm
-  - tlp
-  - smartmontools
-  - acpi
-  - acpid
-  - acpitool
-  - policycoreutils-python
-  - mlocate
-  - owncloud-client
-#- name: start smartcard reader
-#  service:
-#    name: pcscd 
-#    state: started
-#    enabled: yes
-#
-- name: Enable smartd
+
+- name: start smartcard reader
   service:
-    name: smartd
+    name: pcscd 
     state: started
     enabled: yes
-
-- name: Enable trim support
-  service:
-    name: fstrim.timer
-    state: started
-    enabled: yes
-
+#sudo dnf copr enable mystro256/gnome-redshift
+#sudo dnf install gnome-shell-extension-redshift

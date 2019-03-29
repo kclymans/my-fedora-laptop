@@ -1,45 +1,18 @@
 - name: install development tools
   dnf: 
-    name: "{{ item }}" 
+    name: "{{ pkg_list_dev }}" 
     state: latest 
-  loop:
-  - ansible
-  - ansible-lint
-  - ansible-review
-  - libsemanage-python
-  - gcc
-  - make
-  - gcc-c++
-  - wireshark
-  - gedit-code-assistance
-  - gedit-plugin-bracketcompletion
-  - gedit-plugin-colorpicker
-  - gedit-plugin-codecomment
-  - gedit-plugin-colorschemer
-  - liveusb-creator
-  - crash
-  - python2-boto3
-  - python-netaddr
-  - python3-docker-py
-  - python2-docker-py
-  - testdisk
-  - https://prerelease.keybase.io/keybase_amd64.rpm
+
 - name: Virtualization software
   dnf: 
-    name: "{{ item }}" 
+    name: "{{ pkg_list_virt }}" 
     state: latest
-  loop:
-  - docker
-#  - virt-manager
-#  - libvirt
-#  - libvirt-python
 
-#- name: don't auto start libvirtd
-#  service: 
-#    name: libvirtd 
-#    state: stopped 
-#    enabled: no
-#
+- name: don't auto start libvirtd
+  service: 
+    name: libvirtd 
+    state: stopped 
+
 - name: Create systemd docker folder
   file:
     path: /etc/systemd/system/docker.service.d
