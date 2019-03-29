@@ -1,4 +1,4 @@
 ---
-intellij_archive: "ideaIC-2016.3.1.tar.gz"
+intellij_archive: "ideaIC-2019.1.tar.gz"
 intellij_url: "http://download.jetbrains.com/idea/{{intellij_archive}}"
-intellij_subdir: "idea-IC-163.9166.29"
+intellij_subdir: "idea-IC-191.6183.87"
