@@ -33,3 +33,27 @@ pkg_list_virt:
   - libvirt
   - libvirt-python
   - virt-install
+
+pkg_list_base:
+  - vim-enhanced
+  - verne-backgrounds-gnome
+  - tmux
+  - guake
+  - schroedinger-cat-backgrounds-animated
+  - schroedinger-cat-backgrounds-gnome
+  - gnutls-utils
+  - rkhunter
+  - gnome-tweak-tool
+  - keepass
+  - gnome-todo
+  - xrdp
+  - vinagre
+  - xchat
+  - gpaste
+  - java-openjdk
+  - icedtea-web
+  - youtube-dl
+  - pcsc-tools
+  - NetworkManager-openconnect-gnome
+  - lshw
+  - powertop

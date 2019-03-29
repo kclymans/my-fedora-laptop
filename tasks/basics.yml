@@ -1,38 +1,12 @@
 - name: install extra packages
   dnf: 
-    name: "{{ item }}" 
+    name: "{{ pkg_list_base }}" 
     state: latest
-  with_items:
-  - vim-enhanced
-  - gimp
-  - gimp-data-extras 
-  - gimp-lqr-plugin 
-  - gimp-resynthesizer 
-  - gimp-paint-studio
-  - verne-backgrounds-gnome
-  - tmux
-  - guake
-  - schroedinger-cat-backgrounds-animated
-  - schroedinger-cat-backgrounds-gnome
-  - gnutls-utils
-  - rkhunter
-  - gnome-tweak-tool
-  - keepass
-  - gnome-todo
-  - gnome-shell-extension-fedmsg
-  - xrdp
-  - vinagre
-  - xchat
-  - gpaste
-  - java-openjdk
-  - icedtea-web
-  - youtube-dl
-  - pcsc-tools
-  - eid-archive-fedora
-  - NetworkManager-openconnect-gnome
-  - lshw
+
 - name: start smartcard reader
   service:
     name: pcscd 
     state: running 
     enabled: yes
+#sudo dnf copr enable mystro256/gnome-redshift
+#sudo dnf install gnome-shell-extension-redshift
