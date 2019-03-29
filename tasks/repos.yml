@@ -1,10 +1,8 @@
 - name: install the rpmfusion repo
   dnf: 
-    name: "{{ item }}"
+    name: ['http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_lsb.release }}.noarch.rpm', 'http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_lsb.release 
+}}.noarch.rpm']
     state: present
-  with_items:
-    - "http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_lsb.release }}.noarch.rpm"
-    - "http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_lsb.release }}.noarch.rpm"
 
 - name: Add repository negativo17 - Spotify
   yum_repository:
