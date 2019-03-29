@@ -1,49 +1,23 @@
 - name: install music and video extras
   dnf: 
-    name: "{{ item }}" 
+    name: "{{ pkg_list_multi_media }}" 
     state: latest 
-  with_items:
-  - gstreamer-plugins-good
-  - gstreamer-plugins-good-extras
-  - gstreamer-plugins-bad-free
-  - gstreamer-plugins-bad-nonfree
-  - gstreamer-plugins-ugly
-  - gstreamer1-plugins-good-extras
-  - gstreamer1-plugins-bad-nonfree
-  - gstreamer1-plugins-bad-freeworld
-  - gstreamer1-plugin-mpg123
-  - gstreamer1-plugins-ugly
-  - gstreamer1-plugin-openh264
-  - gstreamer1-libav
-  - vlc
-  - ffmpeg
-  - gstreamer-ffmpeg
-  - libmpg123 
-  - lame-libs
-  - spotify-client
-  - calibre
-  - qcomicbook
+
 - name: Install game lib or software
   dnf: 
-    name: "{{ item }}" 
+    name: "{{ pkg_list_multi_game }}" 
     state: latest
-  with_items:
-  - steam
-  - libva-intel-driver.i686
-  - libva-intel-driver.x86_64
-  - SDL2.i686
-  - SDL2_image.i686
-  - compat-openssl.i686
-  - openal-soft.i686
-  - librtmp.i686
+
 - name: allow Steam big picture mode
   seboolean: 
     name: allow_execheap 
     state: yes
+
 - name: Place steam folder under home rather then the hidden .local dir 
   file: 
     state: directory 
     path: "{{ lookup('env','HOME')+'/Steam' }}"
+
 - name: create symlink to it
   file: 
     state: link 
