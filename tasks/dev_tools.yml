@@ -12,4 +12,25 @@
   service: 
     name: libvirtd 
     state: stopped 
+
+- name: Create systemd docker folder
+  file:
+    path: /etc/systemd/system/docker.service.d
+    state: directory
+    owner: root
+    group: root
+    mode: 0750
+
+- name: start docker
+  service:
+    name: docker
+    state: started
     enabled: no
+
+- name: Create internal docker network
+  docker_network:
+    name: internalnet
+    ipam_options:
+      subnet: '172.18.0.0/16'
+      gateway: 172.18.0.1
+      iprange: '172.18.5.5/24'
